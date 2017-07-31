@@ -17,7 +17,7 @@
 module add ci
 module add  argtable
 module add gcc/${GCC_VERSION}
-cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
+cd ${WORKSPACE}/${NAME}-${VERSION}
 make installcheck
 make install
 echo $?

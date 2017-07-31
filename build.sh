@@ -51,12 +51,11 @@ else
   echo "continuing from previous builds, using source at " ${SRC_DIR}/${SOURCE_FILE}
 fi
 tar xzf  ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
-mkdir -p ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
-cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
+cd ${WORKSPACE}/${NAME}-${VERSION}
 export CFLAGS="$CFLAGS -I${ARGTABLE_DIR}/include"
 export LDFLAGS="$LDFLAGS -L${ARGTABLE_DIR}/lib"
 
-../configure \
+./configure \
 --with-gnu-ld \
 --enable-shared \
 --enable-static \
