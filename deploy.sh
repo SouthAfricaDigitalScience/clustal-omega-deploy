@@ -8,6 +8,9 @@ module add deploy
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
+export CFLAGS="$CFLAGS -I${ARGTABLE_DIR}/include"
+export LDFLAGS="$LDFLAGS -L${ARGTABLE_DIR}/lib"
+
 ./configure \
 --with-gnu-ld \
 --enable-shared \
