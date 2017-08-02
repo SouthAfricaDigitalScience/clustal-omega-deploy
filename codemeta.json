@@ -1,0 +1,23 @@
+{
+  "@context": "https://raw.githubusercontent.com/codemeta/codemeta/master/codemeta.jsonld",
+  "@type": "Code",
+  "author": [
+    {
+      "@id": "http://orcid.org/0000-0002-6607-7145",
+      "@type": "Person",
+      "email": "bbecker@csir.co.za",
+      "name": "Bruce Becker",
+      "affiliation": "C.S.I.R. Meraka Institute"
+    }
+  ],
+  "identifier": "",
+  "codeRepository": "https://github.com/SouthAfricaDigitalScience/clustal-omega-deploy",
+  "datePublished": "2017-08-02",
+  "dateModified": "2017-08-02",
+  "dateCreated": "2017-08-02",
+  "description": "Build, test and deploy scripts for clustal omega in CODE-RADE",
+  "keywords": "CODE-RADE, sequence, alignment, bioinformatics",
+  "license": "Apache 2.0",
+  "title": "Clustal Omega Deploy",
+  "version": "v0.0.1-fr3"
+}
