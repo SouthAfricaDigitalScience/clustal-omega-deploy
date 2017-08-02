@@ -19,15 +19,6 @@ module add ci
 module add  argtable
 module  add  gcc/${GCC_VERSION}
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
-whoami
-echo "REPO_DIR is "
-echo $REPO_DIR
-echo "SRC_DIR is "
-echo $SRC_DIR
-echo "WORKSPACE is "
-echo $WORKSPACE
-echo "SOFT_DIR is"
-echo $SOFT_DIR
 
 mkdir -p ${WORKSPACE}
 mkdir -p ${SRC_DIR}

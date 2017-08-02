@@ -37,11 +37,11 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       CLUSTAL_OMEGA_VERSION       $VERSION
-setenv       CLUSTAL_OMEGA_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       CLUSTAL_OMEGA_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}
 prepend-path PATH                           $::env(CLUSTAL_OMEGA_DIR)/bin
 prepend-path LD_LIBRARY_PATH   $::env(CLUSTAL_OMEGA_DIR)/lib
-prepend-path CFLAGS                      "$CFLAGS -I$::env(CLUSTAL_OMEGA_DIR)/include"
-prepend-path LDFLAGS                    "$LDFLAGS -L$::env(CLUSTAL_OMEGA_DIR)/lib"
+setenv CFLAGS                      "$CFLAGS -I$::env(CLUSTAL_OMEGA_DIR)/include"
+setenv LDFLAGS                    "$LDFLAGS -L$::env(CLUSTAL_OMEGA_DIR)/lib"
 MODULE_FILE
 ) > modules/$VERSION-gcc-${GCC_VERSION}
 
@@ -51,3 +51,5 @@ cp -v modules/$VERSION-gcc-${GCC_VERSION} ${BIOINFORMATICS}/${NAME}
 echo "checking module"
 module avail ${NAME}
 echo "adding module"
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
+which clustalo

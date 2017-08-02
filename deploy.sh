@@ -5,8 +5,6 @@ module add deploy
 module add  argtable
 module  add  gcc/${GCC_VERSION}
 echo ${SOFT_DIR}
-module add deploy
-echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 export CFLAGS="$CFLAGS -I${ARGTABLE_DIR}/include"
@@ -33,10 +31,19 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/CLUSTAL_OMEGA-deploy"
 setenv CLUSTAL_OMEGA_VERSION       $VERSION
-setenv CLUSTAL_OMEGA_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv CLUSTAL_OMEGA_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}
 prepend-path PATH                           $::env(CLUSTAL_OMEGA_DIR)/bin
 prepend-path LD_LIBRARY_PATH   $::env(CLUSTAL_OMEGA_DIR)/lib
-prepend-path CFLAGS            "$CFLAGS -I$::env(CLUSTAL_OMEGA_DIR)/include"
-prepend-path LDFLAGS           "$LDFLAGS -L$::env(CLUSTAL_OMEGA_DIR)/lib"
+setenv CFLAGS            "$CFLAGS -I$::env(CLUSTAL_OMEGA_DIR)/include"
+setenv LDFLAGS           "$LDFLAGS -L$::env(CLUSTAL_OMEGA_DIR)/lib"
 MODULE_FILE
-) > ${LIBRARIES}/${NAME}/${VERSION}
+) > modules/$VERSION-gcc-${GCC_VERSION}
+
+mkdir -vp ${BIOINFORMATICS}/${NAME}
+cp -v modules/$VERSION-gcc-${GCC_VERSION} ${BIOINFORMATICS}/${NAME}
+
+echo "checking module"
+module avail ${NAME}
+echo "adding module"
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
+which clustalo
