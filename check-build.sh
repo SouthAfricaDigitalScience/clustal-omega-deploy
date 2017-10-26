@@ -34,7 +34,8 @@ proc ModulesHelp { } {
     puts stderr "       This module does nothing but alert the user"
     puts stderr "       that the [module-info name] module is not available"
 }
-
+module add gcc/${GCC_VERSION}
+module add argtable
 module-whatis   "$NAME $VERSION."
 setenv       CLUSTAL_OMEGA_VERSION       $VERSION
 setenv       CLUSTAL_OMEGA_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}
@@ -52,4 +53,5 @@ echo "checking module"
 module avail ${NAME}
 echo "adding module"
 module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
+module add  argtable
 which clustalo

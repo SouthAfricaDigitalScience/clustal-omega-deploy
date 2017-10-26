@@ -29,6 +29,9 @@ proc ModulesHelp { } {
     puts stderr "       that the [module-info name] module is not available"
 }
 
+module add gcc/${GCC_VERSION}
+module add argtable
+
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/CLUSTAL_OMEGA-deploy"
 setenv CLUSTAL_OMEGA_VERSION       $VERSION
 setenv CLUSTAL_OMEGA_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}
